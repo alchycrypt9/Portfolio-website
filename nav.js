@@ -82,17 +82,20 @@ if (loader) {
     contact:  'page-contact',
   };
 
+  function scrollToSection(id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    // Use instant offset calculation — avoids snap fighting scrollIntoView
+    const top = el.getBoundingClientRect().top + window.pageYOffset;
+    window.scrollTo({ top: top, behavior: 'smooth' });
+  }
+
   function openSection(pageId) {
-    const page = document.getElementById(pageId);
-    if (!page) return;
-    // make sure it's visible before scrolling
-    page.classList.add('in-view');
-    page.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    scrollToSection(pageId);
   }
 
   function closeSection() {
-    const home = document.getElementById('home');
-    if (home) home.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    scrollToSection('home');
   }
 
   if (glassNav) {
@@ -101,6 +104,7 @@ if (loader) {
 
       btn.addEventListener('click', e => {
         e.preventDefault();
+         e.stopPropagation();
         btn.classList.add('nav-active');
         setTimeout(() => btn.classList.remove('nav-active'), 380);
         closeMenu();
@@ -127,15 +131,12 @@ if (loader) {
      ============================================================ */
   const revealEls = document.querySelectorAll('.section-page');
   if (revealEls.length) {
-    // mark all visible immediately so nothing is ever blank
-    revealEls.forEach(el => el.classList.add('in-view'));
-
     // then re-add the fade animation only for sections not yet scrolled to
     const revealObs = new IntersectionObserver(entries => {
       entries.forEach(e => {
         if (e.isIntersecting) e.target.classList.add('in-view');
       });
-    }, { threshold: 0.05 });
+    }, { threshold: 0.08 });
     revealEls.forEach(el => revealObs.observe(el));
   }
 
@@ -214,7 +215,6 @@ if (loader) {
   ];
 
   const COIN_IDS   = COINS.map(c => c.id).join(',');
-  const TICKER_URL = `https://api.coingecko.com/api/v3/simple/price?ids=${COIN_IDS}&vs_currencies=usd&include_24hr_change=true`;
   const trackEl    = document.getElementById('cryptoTrack');
 
   function formatPrice(p) {
@@ -223,16 +223,15 @@ if (loader) {
     return '$' + p.toFixed(4);
   }
 
-  function buildChips(data) {
-    const chips = COINS.map(c => {
-      const info = data[c.id];
-      if (!info) return '';
-      const price  = formatPrice(info.usd);
-      const chg    = info.usd_24h_change;
+  function buildChipsFromMarkets(data) {
+    if (!trackEl || !data.length) return;
+    const chips = data.map(coin => {
+      const price  = formatPrice(coin.current_price);
+      const chg    = coin.price_change_percentage_24h || 0;
       const chgStr = (chg >= 0 ? '▲' : '▼') + Math.abs(chg).toFixed(2) + '%';
       const cls    = chg >= 0 ? 'up' : 'down';
       return `<span class="crypto-chip">
-        <span class="c-sym">${c.sym}</span>
+        <span class="c-sym">${coin.symbol.toUpperCase()}</span>
         <span class="c-price">${price}</span>
         <span class="c-chg ${cls}">${chgStr}</span>
       </span><span class="crypto-sep">◆</span>`;
@@ -242,9 +241,11 @@ if (loader) {
 
   async function fetchCrypto() {
     try {
-      const res  = await fetch(TICKER_URL);
+      const url = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${COIN_IDS}&order=market_cap_desc&per_page=15&page=1&price_change_percentage=24h`;
+      const res = await fetch(url, { headers: { 'Accept': 'application/json' } });
+      if (!res.ok) throw new Error('API error');
       const data = await res.json();
-      buildChips(data);
+      buildChipsFromMarkets(data);
     } catch {
       if (!trackEl) return;
       const fallback = COINS.map(c =>
