@@ -1,6 +1,3 @@
-/* ============================================================
-   style.css — The Alchemist Portfolio
-   ============================================================ */
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -50,13 +47,13 @@ body.dark .dark-bg-canvas {
   pointer-events: none;
 }
 
-/* dark mode section pages */
+
 body.dark .section-page {
   background: transparent;
   border-top-color: rgba(255,255,255,0.06);
 }
 
-/* dark mode glass nav */
+
 body.dark .glass-nav {
   background: rgba(255,255,255,0.15);
   border-color: rgba(255,255,255,0.35);
@@ -80,44 +77,44 @@ body.dark .nav-div {
   background: rgba(255,255,255,0.15);
 }
 
-/* dark mode menu trigger */
+
 body.dark .menu-trigger {
   background: rgba(255,255,255,0.08);
   border-color: rgba(255,255,255,0.15);
 }
 
-/* dark mode project cards */
+
 body.dark .project-card {
   background: rgba(255,255,255,0.04);
   border-color: rgba(255,255,255,0.08);
 }
 
-/* dark mode skill cards */
+
 body.dark .skill-card {
   background: rgba(255,255,255,0.04);
   border-color: rgba(255,255,255,0.08);
 }
 body.dark .skill-desc { color: #999; }
 
-/* dark mode form inputs */
+
 body.dark .form-input {
   background: rgba(255,255,255,0.06);
   border-color: rgba(255,255,255,0.12);
   color: var(--ink);
 }
 
-/* dark mode social buttons */
+
 body.dark .social-icon-btn {
   background: rgba(255,255,255,0.06);
   border-color: rgba(255,255,255,0.1);
 }
 
-/* dark mode about text */
+
 body.dark .about-body { color: #aaa; }
 body.dark .entry-desc  { color: #888; }
 body.dark .project-desc { color: #888; }
 
-/* ── Theme capsule toggle ── */
+
 .theme-capsule {
   position: fixed;
   top: 1.8rem;
@@ -217,7 +214,7 @@ body.dark .theme-thumb {
   left: 16px;
   background: #1a1a1a;
 }
-/* ── Base ── */
+
 html {
   scroll-behavior: smooth;
   height: 100%;
@@ -239,7 +236,7 @@ body {
 }
 
 
-/* vignette */
+
 body::after {
   content: ''; position: fixed; inset: 0;
   pointer-events: none; z-index: 0;
@@ -247,9 +244,7 @@ body::after {
 }
 
 
-/* ============================================================
-   AMBIENT BLOBS
-   ============================================================ */
+
 .blob { position: fixed; border-radius: 50%; filter: blur(80px); pointer-events: none; z-index: 0; }
 .blob-1 { width:400px;height:400px;top:-100px;left:-100px; background:radial-gradient(circle,rgba(232,76,30,0.12),transparent 70%); animation:drift 13s ease-in-out infinite; }
 .blob-2 { width:360px;height:360px;bottom:-80px;right:-80px; background:radial-gradient(circle,rgba(30,62,204,0.08),transparent 70%); animation:drift 17s ease-in-out infinite reverse; }
@@ -260,9 +255,7 @@ body::after {
   70%{transform:translate(-14px,20px) scale(0.97)}
 }
 
-/* ============================================================
-   BADGES
-   ============================================================ */
+
 .badges {
   position: fixed; top: 1.9rem; left: 50%; transform: translateX(-50%);
   display: flex; flex-direction: column; align-items: center; gap: 0.38rem;
@@ -274,9 +267,7 @@ body::after {
 .tz-badge { display:flex;align-items:center;gap:0.36rem;font-size:0.61rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(130,118,100,0.75); }
 .tz-badge svg { width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round; }
 
-/* ============================================================
-   MENU TRIGGER — circular, breathing
-   ============================================================ */
+
 .menu-trigger {
   position: fixed; top: 1.75rem; right: 2rem;
   width: 50px; height: 50px; border-radius: 50%;
@@ -300,9 +291,7 @@ body::after {
 .mi-line { width:20px;height:1px;background:var(--ink);border-radius:1px;transition:background 0.2s; }
 .menu-trigger.open .mi-line { background: var(--accent); }
 
-/* ============================================================
-   GLASS NAV — bigger, labels beside icons on the right
-   ============================================================ */
+
 .glass-nav {
   position: fixed; top: 5.6rem; right: 1.8rem; z-index: 250;
   display: flex; flex-direction: column; align-items: stretch; gap: 0.2rem;
@@ -349,9 +338,7 @@ body::after {
 .nav-btn.nav-active { background:rgba(232,76,30,0.18)!important;color:var(--accent)!important;transform:scale(0.95)!important; }
 .nav-div { width:100%;height:1px;background:rgba(13,13,11,0.08);margin:0.15rem 0; }
 
-/* ============================================================
-   HOME SCENE
-   ============================================================ */
+
 .home-scene {
   position: relative; z-index: 1;
   width: 100%; min-height: 100vh;
@@ -359,15 +346,13 @@ body::after {
   align-items: center; justify-content: center;
 }
 
-/* ============================================================
-   HERO CARD
-   ============================================================ */
+
 .hero-card {
   display: flex; flex-direction: column; align-items: center; text-align: center;
   opacity: 0; animation: riseUp 1s cubic-bezier(.16,1,.3,1) 0.4s forwards;
 }
 
-/* photo */
+
 .photo-wrap { position:relative;display:inline-block;margin-bottom:1.8rem;width:240px;height:240px; }
 .orbit-ring {
   position: absolute; inset: -14px;
@@ -387,15 +372,15 @@ body.dark .orbit-ring {
 .photo-placeholder { width:100%;height:100%;background:linear-gradient(140deg,#1a1814 0%,#2b2318 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.5rem; }
 .ph-icon{font-size:2.6rem;opacity:0.22;}.ph-txt{font-size:0.54rem;letter-spacing:0.13em;text-transform:uppercase;color:rgba(245,240,232,0.2);}
 
-/* name & role */
+
 .hero-name { font-family:'Great vibes',Cursive;font-size:clamp(3.2rem,7.5vw,6rem);line-height:0.92;letter-spacing:0.04em;color:var(--ink); }
 .hero-name .hot { color:var(--accent); }
 .hero-role { font-family:'DM san family', serif;font-style:italic;font-size:clamp(0.7rem,1.5vw,1.1rem);color:var(--muted);margin-top:0.6rem; }
 
-/* ── CTAs ── */
+
 .hero-ctas { display:flex;gap:1.2rem;margin-top:1.8rem;align-items:center;flex-wrap:wrap;justify-content:center; }
 
-/* View My Work — rounded orange frosted glass, breathing */
+
 .btn-p {
   padding: 0.82rem 1.9rem;
   background: rgba(232,76,30,0.22);
@@ -416,7 +401,7 @@ body.dark .orbit-ring {
   50%{ box-shadow:0 0 0 8px rgba(232,76,30,0.1); }
 }
 
-/* Let's Talk — typing dots */
+
 .btn-g {
   font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase;
   color: var(--muted); text-decoration: none;
@@ -439,17 +424,13 @@ body.dark .orbit-ring {
   40%{transform:scale(1.1);opacity:1}
 }
 
-/* ============================================================
-   SCROLL HINT
-   ============================================================ */
+
 .scroll-hint { position:absolute;bottom:3rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:0.4rem;z-index:10;opacity:0;animation:fadeIn 1s 1.4s forwards; }
 .scroll-hint span { font-size:0.56rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted); }
 .whisker { width:1px;height:26px;background:linear-gradient(to bottom,var(--muted),transparent);animation:whisk 1.7s ease-in-out infinite; }
 @keyframes whisk{0%,100%{opacity:1;transform:scaleY(1)}50%{opacity:0.3;transform:scaleY(0.5)}}
 
-/* ============================================================
-   CRYPTO TICKER — live feed at bottom
-   ============================================================ */
+
 .crypto-ticker {
   position: fixed; bottom: 0; left: 0; width: 100%; overflow: hidden;
   z-index: 100; background: rgba(13,13,11,0.85);
@@ -478,9 +459,7 @@ body.dark .orbit-ring {
 .crypto-chip .c-chg.down { color: #f87171; }
 .crypto-sep { color: rgba(255,255,255,0.15); font-size: 0.6rem; }
 
-/* ============================================================
-   SECTION PAGES
-   ============================================================ */
+
 .section-page {
   position: relative;
   width: 100%; min-height: 100vh;
@@ -509,7 +488,7 @@ body.dark .orbit-ring {
 .section-title { font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,7vw,6rem);line-height:0.92;color:var(--ink);margin-bottom:3rem; }
 .section-title em { font-family:'DM Serif Display',serif;font-style:italic;color:var(--accent); }
 
-/* ── About ── */
+
 .about-grid { display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;max-width:900px; }
 .about-body { font-size:1rem;color:#555;line-height:1.9; }
 .about-body + .about-body { margin-top:1.2rem; }
@@ -518,7 +497,7 @@ body.dark .orbit-ring {
 .stat-num span { color:var(--accent); }
 .stat-label { font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-top:0.25rem; }
 
-/* ── Expertise / Skills grid ── */
+
 .skills-grid {
   display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 1.2rem; max-width: 1000px; margin-bottom: 3.5rem;
@@ -546,7 +525,7 @@ body.dark .orbit-ring {
 }
 .skill-desc { font-size: 0.84rem; color: #666; line-height: 1.7; }
 
-/* ── Projects ── */
+
 .projects-grid { display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.4rem;max-width:1000px; }
 .project-card { background:rgba(255,255,255,0.5);border:1px solid rgba(255,255,255,0.8);backdrop-filter:blur(8px);padding:1.8rem;position:relative;overflow:hidden;border-radius:20px;transition:transform 0.28s ease,border-color 0.28s;cursor:pointer; }
 .project-card:hover { transform:translateY(-5px);border-color:var(--accent); }
@@ -556,7 +535,7 @@ body.dark .orbit-ring {
 .project-desc { font-size:0.88rem;color:#666;line-height:1.7; }
 .project-arrow { display:inline-block;margin-top:1.2rem;font-size:1rem;color:var(--muted);transition:transform 0.1s,color 0.1s; }
 .project-card:hover .project-arrow { transform:translate(3px,-3px);color:var(--accent); }
-/* ── Contact ── */
+
 .contact-wrap { max-width: 620px; }
 .contact-sub { color:var(--muted);font-size:1rem;line-height:1.8;margin-bottom:2.5rem; }
 
@@ -583,9 +562,9 @@ body.dark .orbit-ring {
   font-size: 0.9rem; color: var(--muted); pointer-events: none;
   transition: top 0.18s ease, font-size 0.18s ease, color 0.18s ease;
 }
-/* textarea label starts near top */
+
 .form-float:has(textarea) .form-floating-label { top: 1.4rem; transform: none; }
-/* float up when has value or is focused */
+
 .form-input:not(:placeholder-shown) ~ .form-floating-label,
 .form-input:focus ~ .form-floating-label {
   top: 0.55rem; transform: none;
@@ -608,7 +587,7 @@ body.dark .orbit-ring {
 }
 .btn-send:hover { background:#c73d15;transform:translateY(-2px); }
 
-/* social icon buttons */
+
 .contact-socials { display:flex;gap:1rem;margin-top:3rem;flex-wrap:wrap; }
 .social-icon-btn {
   width: 46px; height: 46px; border-radius: 50%;
@@ -623,9 +602,7 @@ body.dark .orbit-ring {
 .social-icon-btn svg { width: 18px; height: 18px; }
 .social-icon-btn:hover { background:var(--accent);color:#fff;border-color:var(--accent);transform:translateY(-3px); }
 
-/* ============================================================
-   KEYFRAMES
-   ============================================================ */
+
 @keyframes fadeIn  { from{opacity:0} to{opacity:1} }
 @keyframes riseUp  { from{opacity:0;transform:translateY(36px)} to{opacity:1;transform:translateY(0)} }
 @keyframes spinR   { to{transform:rotate(360deg)} }
@@ -636,9 +613,7 @@ body.dark .orbit-ring {
   padding-bottom: 5rem; /* clears the crypto ticker */
 }
 
-/* ============================================================
-   RESPONSIVE
-   ============================================================ */
+
 @media (max-width: 700px) {
   .about-grid, .form-float-row { grid-template-columns: 1fr; gap: 1.5rem; }
   .section-page { padding: 5rem 1.2rem 4rem; }
@@ -646,7 +621,7 @@ body.dark .orbit-ring {
   .glass-nav    { min-width: 150px; right: 1rem; }
   .hero-name    { font-size: clamp(2.8rem,12vw,4rem); }
 }
-/* ── Dark mode toggle capsule (replaces logo position) ── */
+
 .theme-capsule {
   position: fixed;
   top: 1.6rem;
@@ -703,7 +678,7 @@ body.dark .theme-thumb {
   background: #2a2621;
 }
 
-/* ── Dark mode variables ── */
+
 body.dark {
   --ink:          #e8e2d9;
   --paper:        #141210;
@@ -743,7 +718,7 @@ body.dark .atomic-loader { background: #000; }
   display: flex; align-items: center; justify-content: center;
 }
 
-/* orange nucleus */
+
 .nucleus {
   width: 22px; height: 22px; border-radius: 50%;
   background: radial-gradient(circle at 35% 35%, #ff7a45, #e84c1e);
@@ -756,7 +731,6 @@ body.dark .atomic-loader { background: #000; }
   50%      { box-shadow: 0 0 28px rgba(232,76,30,1),   0 0 65px rgba(232,76,30,0.5); }
 }
 
-/* orbits */
 .orbit {
   position: absolute; border-radius: 50%;
   border: 1px solid rgba(232,76,30,0.35);
