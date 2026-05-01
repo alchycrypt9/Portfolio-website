@@ -241,11 +241,10 @@ if (loader) {
 
   async function fetchCrypto() {
     try {
-      const url = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${COIN_IDS}&order=market_cap_desc&per_page=15&page=1&price_change_percentage=24h`;
-      const res = await fetch(url, { headers: { 'Accept': 'application/json' } });
-      if (!res.ok) throw new Error('API error');
-      const data = await res.json();
-      buildChipsFromMarkets(data);
+      const url = 'https://crypto-proxy.thoorm95.workers.dev/';
+      const res = await fetch(url);
+      if (!res.ok) throw new Error();
+      buildChipsFromMarkets(await res.json());
     } catch {
       if (!trackEl) return;
       const fallback = COINS.map(c =>
