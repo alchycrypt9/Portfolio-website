@@ -1,18 +1,5 @@
-/**
- * nav.js — The Alchemist Portfolio Controller
- * ─────────────────────────────────────────────
- * 1. Custom cursor
- * 2. Sniper scope on click / touch
- * 3. Menu toggle (breathing circle)
- * 4. Section page routing
- * 5. Logo hide/show based on scroll position
- * 6. Live crypto ticker — 15 coins, refreshes every 5 min
- * 7. Contact form → Formspree email delivery
- */
 
-(function () { /* ============================================================
-   LOADER — hides after page fully loads
-   ============================================================ */
+(function () { 
 const loader = document.getElementById('atomicLoader');
 if (loader) {
   window.addEventListener('load', () => {
@@ -20,10 +7,6 @@ if (loader) {
   });
 }
   'use strict';
-
-  /* ============================================================
-     1. CUSTOM CURSOR
-     ============================================================ */
   const cur  = document.getElementById('cur');
   const ring = document.getElementById('ring');
   if (cur && ring) {
@@ -39,9 +22,6 @@ if (loader) {
     })();
   }
   
-  /* ============================================================
-     3. MENU TOGGLE
-     ============================================================ */
   const menuTrigger = document.getElementById('menuTrigger');
   const glassNav    = document.getElementById('glassNav');
   let menuOpen = false;
@@ -70,9 +50,6 @@ if (loader) {
     setTimeout(() => menuTrigger.classList.add('breathing'), 1200);
   }
 
-  /* ============================================================
-     4. SECTION ROUTING — scroll-snap based
-     ============================================================ */
   const SECTION_MAP = {
     home:     'home',
     about:    'page-about',
@@ -85,7 +62,6 @@ if (loader) {
   function scrollToSection(id) {
     const el = document.getElementById(id);
     if (!el) return;
-    // Use instant offset calculation — avoids snap fighting scrollIntoView
     const top = el.getBoundingClientRect().top + window.pageYOffset;
     window.scrollTo({ top: top, behavior: 'smooth' });
   }
@@ -121,17 +97,9 @@ if (loader) {
       }, { passive: false });
     });
   }
-
-  // expose globally for inline onclick buttons
   window.portfolioNav = { openSection, closeSection };
-
-  /* ============================================================
-     5. SCROLL REVEAL
-     Marks each section visible as it enters viewport
-     ============================================================ */
   const revealEls = document.querySelectorAll('.section-page');
   if (revealEls.length) {
-    // then re-add the fade animation only for sections not yet scrolled to
     const revealObs = new IntersectionObserver(entries => {
       entries.forEach(e => {
         if (e.isIntersecting) e.target.classList.add('in-view');
@@ -139,10 +107,6 @@ if (loader) {
     }, { threshold: 0.08 });
     revealEls.forEach(el => revealObs.observe(el));
   }
-
-  /* ============================================================
-     6. DARK MODE TOGGLE
-     ============================================================ */
   const themeToggle = document.getElementById('themeToggle');
   const savedTheme  = localStorage.getItem('theme');
   if (savedTheme === 'dark') document.body.classList.add('dark');
@@ -154,9 +118,6 @@ if (loader) {
     });
   }
 
-  /* ============================================================
-     7. CONTACT FORM — Formspree
-     ============================================================ */
   const contactForm = document.getElementById('contactForm');
   if (contactForm) {
     contactForm.addEventListener('submit', async e => {
@@ -193,9 +154,6 @@ if (loader) {
     });
   }
 
-  /* ============================================================
-     8. LIVE CRYPTO TICKER
-     ============================================================ */
   const COINS = [
     { id: 'bitcoin',             sym: 'BTC'  },
     { id: 'ethereum',            sym: 'ETH'  },
