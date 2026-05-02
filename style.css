@@ -1329,7 +1329,7 @@ body.dark .orbit-ring {
 
 .theme-capsule {
   position: fixed;
-  top: 1.6rem;
+  top: 0.15rem;
   left: 2.2rem;
   z-index: 200;
   opacity: 0;
