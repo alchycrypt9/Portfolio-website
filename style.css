@@ -35,7 +35,6 @@ body.dark .blob {
   display: none;
 }
 
-/* animated dark background — subtle moving orange glow */
 body.dark {
   background: #000;
   position: relative;
@@ -120,17 +119,7 @@ body.dark .entry-desc {
 }
 body.dark .project-desc {
   color: #888;
-}
-
-.theme-capsule {
-  position: fixed;
-  top: 1.8rem;
-  left: 2.2rem;
-  z-index: 200;
-  opacity: 0;
-  animation: fadeIn 0.7s 0.3s forwards;
-}
-
+  
 .theme-toggle {
   background: none;
   border: none;
@@ -260,6 +249,23 @@ body {
   background-attachment: fixed;
 }
 
+.section-page {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.home-scene {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+}
+
+.home-scene .hero-card {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
 body::after {
   content: "";
   position: fixed;
@@ -284,6 +290,16 @@ body::after {
   z-index: 9999;
   transform: translate(-50%, -50%);
 }
+  @media (hover: none) and (pointer: coarse) {
+  .cursor,
+  .cursor-ring {
+    display: none;
+  }
+
+  body {
+    cursor: auto;
+  }
+  }
 
 .cursor-ring {
   position: fixed;
@@ -341,19 +357,6 @@ body::after {
   }
 }
 
-.badges {
-  position: fixed;
-  top: 1.9rem;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.38rem;
-  z-index: 50;
-  opacity: 0;
-  animation: fadeIn 0.7s 0.6s forwards;
-}
 .avail-badge {
   display: flex;
   align-items: center;
@@ -397,31 +400,47 @@ body::after {
   stroke-linecap: round;
   stroke-linejoin: round;
 }
-
-.menu-trigger {
+  
+  .site-header {
   position: fixed;
-  top: 1.75rem;
-  right: 2rem;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
+  top: 0; left: 0; right: 0;
+  height: 64px;
+  z-index: 300;
   display: flex;
   align-items: center;
-  justify-content: center;
-  background: rgba(255, 255, 255, 0.28);
+  justify-content: space-between;
+  padding: 0 2rem;
+  background: rgba(245, 240, 232, 0.6);
   backdrop-filter: blur(16px) saturate(160%);
   -webkit-backdrop-filter: blur(16px) saturate(160%);
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  box-shadow:
-    0 4px 18px rgba(0, 0, 0, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.7);
-  z-index: 300;
-  cursor: pointer;
-  opacity: 20;
-  animation: fadeIn 0.7s 0.4s forwards;
-  outline: none;
-  -webkit-tap-highlight-color: transparent;
+  border-bottom: 1px solid rgba(255,255,255,0.4);
+  transition: background 0.3s ease;
 }
+
+body.dark .site-header {
+  background: rgba(0, 0, 0, 0.55);
+  border-bottom-color: rgba(255,255,255,0.08);
+}
+
+.theme-capsule {
+  position: static;
+  animation: none;
+  opacity: 1;
+}
+
+.badges {
+  position: static;
+  transform: none;
+  animation: none;
+  opacity: 1;
+}
+
+.menu-trigger {
+  position: static;
+  animation: none;
+  opacity: 1;
+}
+  
 .menu-trigger.breathing {
   animation: breathe 5s ease-in-out infinite;
 }
@@ -1107,7 +1126,6 @@ body.dark .orbit-ring {
   margin-bottom: 2.5rem;
 }
 
-/* floating label form inputs */
 .contact-form {
   display: flex;
   flex-direction: column;
@@ -1288,6 +1306,13 @@ body.dark .orbit-ring {
   }
   .hero-name {
     font-size: clamp(2.8rem, 12vw, 4rem);
+  }
+}
+
+media (min-width: 1200px) {
+  .section-page {
+    padding-left: calc((100vw - 1200px) / 2 + 3rem);
+    padding-right: calc((100vw - 1200px) / 2 + 3rem);
   }
 }
 
