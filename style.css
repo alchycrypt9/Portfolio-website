@@ -127,7 +127,7 @@ body.dark .project-desc {
 .theme-capsule {
   position: fixed;
   top: 0.15rem;
-  left: 2.2rem;
+  left: 1.5rem;
   z-index: 200;
   opacity: 0;
   animation: fadeIn 0.7s 0.3s forwards;
